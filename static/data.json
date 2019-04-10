@@ -1,0 +1,72 @@
+{
+  "projects": [
+    {
+      "title": "marknote",
+      "description": "markdown based notes app for the web",
+      "linkTo": "/project/test",
+      "url": "https://marknote.now.sh"
+    },
+    {
+      "title": "ossus",
+      "description": "dynamically create static and server rendered markdown based documentation sites with next.js",
+      "url": "https://ossus.fortellis.io"
+    },
+    {
+      "title": "radient",
+      "description": "create beautiful radial gradient based backgrounds in css by hand",
+      "url": "https://radient.now.sh"
+    },
+    {
+      "title": "dnd cards",
+      "description": "website for viewing and playing a dnd 5e extension adding tradable playing cards",
+      "url": "https://cards.danggoodcode.com"
+    },
+    {
+      "title": "startpages",
+      "description": "collection of static site startpages",
+      "url": "https://github.com/Jaredk3nt/startpage"
+    },
+    {
+      "title": "vscode themes",
+      "description": "collection of my publicly avaliable vscode syntax themes",
+      "url": "https://marketplace.visualstudio.com/publishers/jaredkent"
+    },
+    {
+      "title": "teamrank",
+      "description": "modified pagerank algorithm to rank teams in the overwatch league",
+      "url": "https://github.com/Jaredk3nt/teamrank"
+    }
+  ],
+  "skills": [
+    {
+      "title": "web development",
+      "description": "day to day i build customer-ready sites with react and node.js"
+    },
+    {
+      "title": "prototyping",
+      "description": "i work with architects to build p.o.c tools and features fast so we can define solid roadmaps"
+    },
+    {
+      "title": "speaking",
+      "description": "i excel at communicating ideas with others including through public speaking"
+    }
+  ],
+  "values": [
+    {
+      "title": "keep it simple",
+      "description": "over-complication breeds a lot of entropy"
+    },
+    {
+      "title": "good design starts from the top",
+      "description": "a code base, website, or team are only as good as their architecture, so make it solid from the start"
+    },
+    {
+      "title": "do it once",
+      "description": "if you have to do something more than once it's probably time to abstract some work away"
+    },
+    {
+      "title": "keep on swimming",
+      "description": "there is always more to learn and explore"
+    }
+  ]
+}
