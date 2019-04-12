@@ -7,7 +7,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "build:projects": "npm run build-projects"
+    "clean:projects": "rm -r static/projects/built; mkdir static/projects/built",
+    "build:projects": "npm run clean:projects; node build/projects.js"
   },
   "author": "Jared K Jones",
   "license": "ISC",

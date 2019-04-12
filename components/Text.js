@@ -6,6 +6,7 @@ function cond(val, def) {
 }
 
 const Text = styled("p")`
+  display: block;
   color: ${p => p.black || 'white'};
   font-size: ${p => (p.fs ? p.fs : 16)}px;
   line-height: ${p => (p.lh ? p.lh : 1)};
@@ -17,6 +18,16 @@ const Text = styled("p")`
   };
   ${p => p.bold && "font-weight: 500;"}
   ${p => p.nowrap && 'white-space: nowrap;'}
+  ${p => p.hoverable && `
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+      }
+  `}
+
+  a {
+    color: ${p => p.black || 'white'};
+  }
 `;
 
 Text.propTypes = {
