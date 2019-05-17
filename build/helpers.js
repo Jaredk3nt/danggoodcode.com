@@ -21,6 +21,7 @@ function readFile(pth) {
 }
 
 function readDir(pth) {
+  console.log(pth);
   return fs.readdirSync(pth);
 }
 

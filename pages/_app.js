@@ -1,7 +1,8 @@
-import App, { Container } from "next/app";
-import { Global, css } from "@emotion/core";
+import App, { Container } from 'next/app';
+import Head from 'next/head';
+import { Global, css } from '@emotion/core';
 // Components
-import { Layout } from "../components/Layout";
+import { Layout } from '../components/Layout';
 import Header from '../components/Header';
 
 export default class MyApp extends App {
@@ -17,28 +18,37 @@ export default class MyApp extends App {
     const { Component, pageProps, router } = this.props;
     return (
       <Container>
-        <Layout>
-          <Header />
-          <Component {...pageProps} />
-        </Layout>
-        <Global
-        styles={css`
-          * {
-            font-family: Silka, sans-serif;
-            font-weight: 300;
-            letter-spacing: .25px;
-          }
+        <span>
+          <Head>
+            <title>danggoodcode;</title>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
+          <Layout>
+            <Header />
+            <Component {...pageProps} />
+          </Layout>
+          <Global
+            styles={css`
+              * {
+                font-family: Silka, sans-serif;
+                font-weight: 300;
+                letter-spacing: 0.25px;
+              }
 
-          body {
-            background-color: black;
-          }
+              body {
+                background-color: black;
+              }
 
-          #__next {
-            height: 100%;
-          }
-        `}
-      />
+              #__next {
+                height: 100%;
+              }
+            `}
+          />
+        </span>
       </Container>
     );
   }
-};
+}

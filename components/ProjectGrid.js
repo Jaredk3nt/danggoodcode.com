@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "../routes";
 // Components
 import {
   Grid,
@@ -17,22 +16,13 @@ import data from "../static/data.json";
 export default function ProjectGrid() {
   return (
     <Grid>
-      {data.projects.slice(0, 5).map(project => {
-        if (project.linkTo) {
-          return (
-            <Link route={project.linkTo} prefetch>
-              <GridItem>
-                <GridItemSpacer>
-                  <GridItemTitle>{project.title}</GridItemTitle>
-                  <GridItemDivider />
-                  <GridItemSubtitle>{project.description}</GridItemSubtitle>
-                </GridItemSpacer>
-              </GridItem>
-            </Link>
-          );
-        }
+      {data.projects.slice(0, 5).map((project, index) => {
         return (
-          <GridItem url={project.url}>
+          <GridItem
+            url={project.linkTo ? undefined : project.url}
+            href={project.linkTo}
+            delay={index * 75}
+          >
             <GridItemSpacer>
               <GridItemTitle>{project.title}</GridItemTitle>
               <GridItemDivider />
@@ -42,7 +32,7 @@ export default function ProjectGrid() {
         );
       })}
 
-      <GridItem href="/projects" white>
+      <GridItem delay={450} href="/projects" white>
         <GridItemSpacer single>
           <ArrowContainer>
             <Text

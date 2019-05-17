@@ -1,31 +1,35 @@
 {
-  "name": "danggoodcode",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "clean:projects": "rm -r static/projects/built; mkdir static/projects/built",
-    "build:projects": "npm run clean:projects; node build/projects.js"
-  },
-  "author": "Jared K Jones",
-  "license": "ISC",
-  "dependencies": {
-    "@emotion/core": "^10.0.10",
-    "@emotion/styled": "^10.0.10",
-    "emotion-theming": "^10.0.10",
-    "next": "^8.0.3",
-    "next-routes": "^1.4.2",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5",
-    "remark": "^10.0.1",
-    "remark-frontmatter": "^1.3.1",
-    "remark-react": "^5.0.1"
-  },
-  "bin": {
-    "build-projects": "build/projects.js"
-  }
+    "name": "danggoodcode",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "next",
+        "export": "next export",
+        "build": "next build",
+        "start": "next start",
+        "deploy": "now ./out",
+        "clean:projects": "rm -r static/projects/dist; mkdir static/projects/dist",
+        "build:projects": "npm run clean:projects; node build/projects.js"
+    },
+    "author": "Jared K Jones",
+    "license": "ISC",
+    "dependencies": {
+        "@emotion/core": "^10.0.10",
+        "@emotion/styled": "^10.0.10",
+        "emotion-theming": "^10.0.10",
+        "express": "^4.16.4",
+        "next": "^8.0.3",
+        "next-routes": "^1.4.2",
+        "prop-types": "^15.7.2",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.5",
+        "react-spring": "^8.0.19",
+        "remark": "^10.0.1",
+        "remark-frontmatter": "^1.3.1",
+        "remark-react": "^5.0.1"
+    },
+    "bin": {
+        "build-projects": "build/projects.js"
+    }
 }

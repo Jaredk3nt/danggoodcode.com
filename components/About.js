@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { animated, useSpring } from "react-spring";
 // Components
 import Tabs from "./Tabs";
 import Text from "./Text";
@@ -10,38 +11,78 @@ const display = {
   [TABS[0]]: Skills,
   [TABS[1]]: Values
 };
+const anim = {
+  opacity: 1,
+  x: 0,
+  from: { opacity: 0, x: 16 }
+};
 
 export default function About() {
   const [tab, updateTab] = useState(TABS[0]);
   const CurrentDisplay = display[tab];
 
+  const textAnim = useSpring(anim);
+  const text2Anim = useSpring({
+    delay: 100,
+    ...anim
+  });
+  const tabsAnim = useSpring({
+    delay: 150,
+    ...anim
+  });
+
   return (
     <>
       <Divider />
-      <Text m={{ top: 28 }} fs={22} lh={1.4}>
-        howdy, my name is jared jones. I am a software developer currently based
-        in austin, tx working on a team called fortellis at cdk global. I spend
+      <AnimatedText
+        style={{
+          ...textAnim,
+          transform: textAnim.x.interpolate(x => `translate3d(0, ${x}px, 0)`)
+        }}
+        m={{ top: 28 }}
+        fs={22}
+        lh={1.4}
+      >
+        Howdy, my name is jared jones. I am a software developer currently based
+        in Austin, TX working on a team called Fortellis at CDK Global. I spend
         my days building a customer driven e-commerce platform for the
         automotive industry and my nights testing my skills and building all
         sorts of fun web projects.
-      </Text>
-      <Text m={{ bottom: 28 }} fs={22} lh={1.4}>
+      </AnimatedText>
+      <AnimatedText
+        style={{
+          ...text2Anim,
+          transform: text2Anim.x.interpolate(x => `translate3d(0, ${x}px, 0)`)
+        }}
+        m={{ bottom: 28 }}
+        fs={22}
+        lh={1.4}
+      >
         I love building for the web because it is an outlet for near-pure
         creativity and problem solving. a good website does more than just look
         good and feel good, it empowers people to do the things they love doing.
-      </Text>
-      <Tabs
-        tabs={TABS}
-        active={tab}
-        onChange={updateTab}
-        width={160}
-        fontSize={22}
-        underlined
-      />
-      <CurrentDisplay />
+      </AnimatedText>
+      <animated.div
+        style={{
+          ...tabsAnim,
+          transform: tabsAnim.x.interpolate(x => `translate3d(0, ${x}px, 0)`)
+        }}
+      >
+        <Tabs
+          tabs={TABS}
+          active={tab}
+          onChange={updateTab}
+          width={160}
+          fontSize={22}
+          underlined
+        />
+        <CurrentDisplay />
+      </animated.div>
     </>
   );
 }
+
+const AnimatedText = animated(Text);
 
 const Divider = styled("hr")`
   color: white;

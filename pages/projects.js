@@ -1,16 +1,40 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { useTrail, animated } from "react-spring";
 import { Link } from "../routes";
 // Components
 import Text from "../components/Text";
 // Variables
 import data from "../static/data.json";
+const config = { mass: 5, tension: 2000, friction: 200 };
 
 export default function Projects() {
-  return data.projects.map(project => <Project project={project} />);
+  const trail = useTrail(data.projects.length, {
+    config,
+    opacity: 1,
+    x: 0,
+    from: {
+      opacity: 0,
+      x: 16
+    }
+  });
+  return trail.map(({ x, ...style }, index) => {
+    return (
+      <animated.div
+        style={{
+          ...style,
+          transform: x.interpolate(x => `translate3d(0, ${x}px, 0)`)
+        }}
+      >
+        <Project project={data.projects[index]} />
+      </animated.div>
+    );
+  });
 }
 
-function Project({ project: { title, description, url, linkTo } }) {
+const AnimatedProject = animated(Project);
+
+function Project({ project: { title, description, url, linkTo } }, style) {
   if (linkTo) {
     return (
       <Link route={linkTo} prefetch>

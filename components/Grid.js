@@ -1,10 +1,16 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { animated, useTrail, useSpring } from "react-spring";
 // Variables
-import { NUM_GRID_ITEMS, GRID_ITEM_WIDTH } from './config';
+import { NUM_GRID_ITEMS, GRID_ITEM_WIDTH } from "./config";
 const PADDING = "36px";
 const DIVIDER_PADDING = "16px";
 const TEXT_SIZE = "15px";
+const anim = {
+  opacity: 1,
+  x: 0,
+  from: { opacity: 0, x: 16 }
+};
 
 export const Grid = styled("ul")`
   width: 100%;
@@ -15,11 +21,13 @@ export const Grid = styled("ul")`
   list-style: none;
   grid-template-columns: repeat(${NUM_GRID_ITEMS}, 1fr);
 
-  @media only screen and (max-width: ${NUM_GRID_ITEMS * GRID_ITEM_WIDTH + 24}px) {
+  @media only screen and (max-width: ${NUM_GRID_ITEMS * GRID_ITEM_WIDTH +
+      24}px) {
     grid-template-columns: repeat(${NUM_GRID_ITEMS - 1}, 1fr);
   }
 
-  @media only screen and (max-width: ${(NUM_GRID_ITEMS - 1) * GRID_ITEM_WIDTH + 24}px) {
+  @media only screen and (max-width: ${(NUM_GRID_ITEMS - 1) * GRID_ITEM_WIDTH +
+      24}px) {
     grid-template-columns: repeat(${NUM_GRID_ITEMS - 2}, 1fr);
   }
 `;
@@ -40,7 +48,6 @@ const GridItemStyled = styled("a")`
   color: ${p => (p.white ? "black" : "white")};
   background-color: ${p => (p.white ? "white" : "black")};
 
-
   &:hover {
     cursor: pointer;
     border: 5px solid white;
@@ -48,15 +55,18 @@ const GridItemStyled = styled("a")`
   }
 
   &:active {
-    background-color: rgba(255,255,255,.2);
+    background-color: rgba(255, 255, 255, 0.2);
   }
 `;
 
-export const GridItemSpacer = styled('div')`
+export const GridItemSpacer = styled("div")`
   position: relative;
   width: 100%;
   height: 100%;
-  top: ${p => p.single ? `calc(50% - ${TEXT_SIZE})` : `calc(50% - ${PADDING} - ${TEXT_SIZE} + ${DIVIDER_PADDING})`};
+  top: ${p =>
+    p.single
+      ? `calc(50% - ${TEXT_SIZE})`
+      : `calc(50% - ${PADDING} - ${TEXT_SIZE} + ${DIVIDER_PADDING})`};
 `;
 
 export const GridItemTitle = styled("h2")`
@@ -76,17 +86,36 @@ export const GridItemDivider = styled("hr")`
   width: 100%;
 `;
 
-export function GridItem({ url, href, children, ...props }) {
+const AnimatedGridItem = animated(GridItemStyled);
+
+export function GridItem({ url, href, children, delay, ...props }) {
+  const textAnim = useSpring({ delay: delay ? delay : 0, ...anim });
   if (url) {
     return (
-      <GridItemStyled href={url} target="_blank" {...props}>
+      <AnimatedGridItem
+        style={{
+          ...textAnim,
+          transform: textAnim.x.interpolate(x => `translate3d(0, ${x}px, 0)`)
+        }}
+        href={url}
+        target="_blank"
+        {...props}
+      >
         {children}
-      </GridItemStyled>
+      </AnimatedGridItem>
     );
   }
   return (
     <Link href={href}>
-      <GridItemStyled {...props}> {children} </GridItemStyled>
+      <AnimatedGridItem
+        style={{
+          ...textAnim,
+          transform: textAnim.x.interpolate(x => `translate3d(0, ${x}px, 0)`)
+        }}
+        {...props}
+      >
+        {children}
+      </AnimatedGridItem>
     </Link>
   );
 }

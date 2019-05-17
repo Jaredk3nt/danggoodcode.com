@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
 import { withRouter } from "next/router";
-import { NUM_GRID_ITEMS, GRID_ITEM_WIDTH } from '../components/config';
+import { NUM_GRID_ITEMS, GRID_ITEM_WIDTH } from "../components/config";
 
 export default withRouter(function Header({ router }) {
   console.log(router.pathname);
@@ -12,12 +12,9 @@ export default withRouter(function Header({ router }) {
     <HeaderContainer>
       <div>
         <Link href="/">
-          <HeaderLink>
-            danggoodcode
-            {show && " / "}
-          </HeaderLink>
+          <HeaderLink>danggoodcode {show && " / "} </HeaderLink>
         </Link>
-        {show && <SiteSection>{path[1]}</SiteSection>}
+        {show && <SiteSection> {path[1]} </SiteSection>}
       </div>
       <HeaderLinks>
         <HeaderLink
@@ -46,7 +43,8 @@ const HeaderContainer = styled("header")`
   padding: 0px 0px 16px 0px;
   border-bottom: 1px solid white;
 
-  @media only screen and (max-width: ${(NUM_GRID_ITEMS - 1) * GRID_ITEM_WIDTH + 24}px) {
+  @media only screen and (max-width: ${(NUM_GRID_ITEMS - 1) * GRID_ITEM_WIDTH +
+      24}px) {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -57,7 +55,8 @@ const HeaderLinks = styled("nav")`
   justify-content: space-between;
   width: 260px;
 
-  @media only screen and (max-width: ${(NUM_GRID_ITEMS - 1) * GRID_ITEM_WIDTH + 24}px) {
+  @media only screen and (max-width: ${(NUM_GRID_ITEMS - 1) * GRID_ITEM_WIDTH +
+      24}px) {
     width: 100%;
     margin-top: 16px;
     padding-top: 16px;
