@@ -43,11 +43,11 @@ export default function About() {
         fs={22}
         lh={1.4}
       >
-        Howdy, my name is jared jones. I am a software developer currently based
-        in Austin, TX working on a team called Fortellis at CDK Global. I spend
+        Howdy, my name is Jared Jones. I am a software developer currently based
+        in Austin, TX working on a project called Fortellis at CDK Global. I spend
         my days building a customer driven e-commerce platform for the
         automotive industry and my nights testing my skills and building all
-        sorts of fun web projects.
+        sorts of fun software projects.
       </AnimatedText>
       <AnimatedText
         style={{
@@ -59,7 +59,7 @@ export default function About() {
         lh={1.4}
       >
         I love building for the web because it is an outlet for near-pure
-        creativity and problem solving. a good website does more than just look
+        creativity and problem solving. A good website does more than just look
         good and feel good, it empowers people to do the things they love doing.
       </AnimatedText>
       <animated.div

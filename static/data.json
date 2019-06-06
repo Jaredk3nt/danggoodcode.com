@@ -1,20 +1,25 @@
 {
   "projects": [
     {
-      "title": "marknote",
-      "description": "markdown based notes app for the web",
-      "linkTo": "/project/marknote",
-      "url": "https://marknote.now.sh"
-    },
-    {
       "title": "ossus",
       "description": "dynamically create static and server rendered markdown based documentation sites with next.js",
       "url": "https://ossus.fortellis.io"
     },
     {
+      "title": "kana trainer",
+      "description": "minimal mobile-first kana flashcard site",
+      "url": "https://kana.danggoodcode.com"
+    },
+    {
       "title": "radient",
       "description": "create beautiful radial gradient based backgrounds in css by hand",
       "url": "https://radient.now.sh"
+    },
+    {
+      "title": "marknote",
+      "description": "markdown based notes app for the web",
+      "linkTo": "/project/marknote",
+      "url": "https://marknote.now.sh"
     },
     {
       "title": "dnd cards",
