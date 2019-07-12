@@ -13,7 +13,9 @@ export default function Markdown({ content }) {
         h2: H2,
         h3: H3,
         p: P,
-        img: Img
+        img: Img,
+        pre: Pre,
+        blockquote: BlockQuote
       }
     })
     .processSync(content).contents;
@@ -36,11 +38,31 @@ function H3({ children }) {
 }
 
 function P({ children }) {
-  return <Text fs={18} lh={1.4} m={{ top: 32 }}>{children}</Text>;
+  return <Text fs={18} lh={1.6} m={{ top: 32 }}>{children}</Text>;
 }
 
 const Img = styled('img')`
   margin: 14px 0px;
   width: 100%;
   max-width: 100%;
+`;
+
+const Pre = styled('pre')`
+  color: white;
+  width: 100%;
+  border: 1px solid white;
+  padding: 16px;
+  box-sizing: border-box;
+  font-size: 1.1rem;
+  font-family: monospace !important;
+  font-weight: 300;
+`;
+
+const BlockQuote = styled('blockquote')`
+  border-left: 5px solid white;
+  margin: 32px 40px 8px 10px;
+  padding: 16px 0px 16px 30px;
+  p {
+    margin: 0px;
+  }
 `;

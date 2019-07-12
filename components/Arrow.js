@@ -13,6 +13,10 @@ export const Arrow = styled("div")`
   background-color: ${p => p.white ? 'white' : 'black'};
   position: relative;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &:after {
     content: '';
     width: 0;
@@ -34,5 +38,9 @@ export const Arrow = styled("div")`
         border-left: 9px solid ${p.white ? 'white' : 'black'};
       `;
     }}
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;

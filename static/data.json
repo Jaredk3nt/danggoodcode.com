@@ -1,4 +1,11 @@
 {
+  "posts": [
+    {
+      "title": "enums in js",
+      "description": "an exploration into writing an enum library for javascript",
+      "linkTo": "/post/enums"
+    }
+  ],
   "projects": [
     {
       "title": "ossus",

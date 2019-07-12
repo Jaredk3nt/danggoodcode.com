@@ -32,14 +32,22 @@ export default class MyApp extends App {
           </Layout>
           <Global
             styles={css`
-              * {
-                font-family: Silka, sans-serif;
-                font-weight: 300;
-                letter-spacing: 0.25px;
-              }
 
               body {
                 background-color: black;
+              }
+
+              body,
+              p,
+              h1,
+              h2,
+              h3,
+              h4,
+              h5,
+              h6 {
+                font-family: Silka, sans-serif;
+                font-weight: 300;
+                letter-spacing: 0.25px;
               }
 
               #__next {

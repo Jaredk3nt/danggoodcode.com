@@ -10,19 +10,19 @@ const defaults = {
 };
 
 async function generatePathMap() {
-    const projects = projectPaths()
-    console.log(projects);
+    const projects = projectPaths();
+    const posts = postPaths();
+    console.log(posts);
     return {
         ...defaults,
-        ...projects
+        ...projects,
+        ...posts
     };
 }
 
 function projectPaths() {
     const path = getFullPath(projectsPath + '/dist');
-    console.log(path);
     const files = readDir(path);
-    console.log(files);
     return files.reduce((acc, file) => {
         const fileName = file.split(".")[0];
         return {
@@ -36,7 +36,18 @@ function projectPaths() {
 }
 
 function postPaths() {
-    return {};
+    const path = getFullPath(postsPath + '/dist');
+    const files = readDir(path);
+    return files.reduce((acc, file) => {
+        const fileName = file.split(".")[0];
+        return {
+            ...acc,
+            [`/post/${fileName}`]: {
+                page: "/post",
+                query: { post: fileName }
+            }
+        };
+    }, {});
 }
 
 module.exports = generatePathMap;

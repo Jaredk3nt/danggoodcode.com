@@ -10,7 +10,10 @@
         "start": "next start",
         "deploy": "now ./out",
         "clean:projects": "rm -r static/projects/dist; mkdir static/projects/dist",
-        "build:projects": "npm run clean:projects; node build/projects.js"
+        "build:projects": "npm run clean:projects; node build/projects.js",
+        "clean:posts": "rm -r static/posts/dist; mkdir static/posts/dist",
+        "build:posts": "npm run clean:posts; node build/posts.js",
+        "build:all": "npm run build:projects && npm run build:posts"
     },
     "author": "Jared K Jones",
     "license": "ISC",

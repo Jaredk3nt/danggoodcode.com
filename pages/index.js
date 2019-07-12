@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 // Components
 import Tabs from "../components/Tabs";
-import Text from '../components/Text';
 import About from "../components/About";
-import ProjectGrid from '../components/ProjectGrid';
+import ProjectGrid from "../components/ProjectGrid";
+import AnimatedList from "../components/AnimatedList";
 // Variables
+import data from "../static/data.json";
 const TABS = ["projects", "blog", "about"];
 const display = {
   [TABS[0]]: ProjectGrid,
-  [TABS[1]]: Blog,
+  [TABS[1]]: PostDisplay,
   [TABS[2]]: About
 };
 
@@ -24,8 +25,6 @@ export default function Index() {
   );
 }
 
-function Blog() {
-  return <Text>Coming shortly!</Text>
+function PostDisplay() {
+  return <AnimatedList list={data.posts.slice(0, 10)} />;
 }
-
-
