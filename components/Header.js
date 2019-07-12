@@ -5,7 +5,6 @@ import { withRouter } from "next/router";
 import { NUM_GRID_ITEMS, GRID_ITEM_WIDTH } from "../components/config";
 
 export default withRouter(function Header({ router }) {
-  console.log(router.pathname);
   const path = router.pathname.split("/");
   const show = path.length === 2 && router.pathname.length > 1;
   return (

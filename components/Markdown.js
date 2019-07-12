@@ -56,6 +56,8 @@ const Pre = styled('pre')`
   font-size: 1.1rem;
   font-family: monospace !important;
   font-weight: 300;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 `;
 
 const BlockQuote = styled('blockquote')`

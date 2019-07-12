@@ -19,7 +19,7 @@ export default class Project extends Component {
 
   render() {
     const {
-      projectData: { title, date, content }
+      projectData: { title, date, content, url }
     } = this.props;
     return (
       <Container>
@@ -41,6 +41,7 @@ export default class Project extends Component {
           aria-level="1"
           m={{ top: 36 }}
           hoverable
+          href={url}
         >
           {title}
         </Text>

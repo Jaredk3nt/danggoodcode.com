@@ -17,12 +17,11 @@ function build() {
   const files = dir.filter(file => isMdFile(`${path}/${file}`));
   const fileData = files.map(file => {
     const content = readFile(`${path}/${file}`);
-    const frontMatter = parseFrontMatter(content);
+    const frontMatter = parseFrontMatter(content) || {};
     return {
       fileName: file.split('.')[0],
-      title: frontMatter.title,
-      date: frontMatter.date,
       content,
+      ...frontMatter
     };
   });
   fileData.forEach(fd =>

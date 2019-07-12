@@ -19,8 +19,9 @@ export default class Project extends Component {
 
   render() {
     const {
-      postData: { title, date, content }
+      postData: { title, date, content, url }
     } = this.props;
+    console.log(url);
     return (
       <Container>
         <div>
@@ -40,6 +41,7 @@ export default class Project extends Component {
           role="heading"
           aria-level="1"
           m={{ top: 36 }}
+          href={url}
           hoverable
         >
           {title}

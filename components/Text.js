@@ -1,11 +1,16 @@
 import styled from "@emotion/styled";
+import isPropValid from '@emotion/is-prop-valid'
 import PropTypes from "prop-types";
 
 function cond(val, def) {
   return val !== undefined ? val : def;
 }
 
-const Text = styled("p")`
+const Text = styled("p", {
+  shouldForwardProp: prop => {
+    return isPropValid(prop) || prop === 'href'
+  }
+})`
   display: block;
   color: ${p => p.black || 'white'};
   font-size: ${p => (p.fs ? p.fs : 16)}px;
