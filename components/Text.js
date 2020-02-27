@@ -33,6 +33,13 @@ const Text = styled("p", {
   a {
     color: ${p => p.black || 'white'};
   }
+
+  code {
+    color: black;
+    font-family: monospace;
+    padding: 0.15em 0.25em;
+    background-color: white;
+  }
 `;
 
 Text.propTypes = {

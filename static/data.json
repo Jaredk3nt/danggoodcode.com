@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "title": "faking react for vscode webviews",
+      "description": "a deep dive into using react concepts in a non-react space",
+      "linkTo": "/post/react-webviews"
+    },
+    {
       "title": "enums in js",
       "description": "an exploration into writing an enum library for javascript",
       "linkTo": "/post/enums"
@@ -52,15 +57,15 @@
   "skills": [
     {
       "title": "web development",
-      "description": "day to day i build customer-ready sites with react and node.js"
+      "description": "day to day I build customer-ready sites with react and node.js"
     },
     {
       "title": "prototyping",
-      "description": "i work with architects to build p.o.c tools and features fast so we can define solid roadmaps"
+      "description": "I work with architects to build p.o.c tools and features fast so we can define solid roadmaps"
     },
     {
       "title": "speaking",
-      "description": "i excel at communicating ideas with others including through public speaking"
+      "description": "I excel at communicating ideas with others including through public speaking"
     }
   ],
   "values": [

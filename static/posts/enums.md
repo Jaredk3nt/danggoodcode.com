@@ -24,13 +24,13 @@ const STATUSES = {
 };
 ```
 
-I have found myself and tons of developers I have worked with imploying this pattern. It's really common to need a set of related constant values, in fact so common that many lanugages have a construct specifically to describe them: Enums. JavaScript is not one of those languages, and that is why we are left with a half-hearted alternative, these "constant" objects. Perhaps one day we may get enums as a build-in language feature (in fact [enum is a reserved word](http://www.javascripter.net/faq/reserved.htm) is JavaScript), but for now we are left with a lacking alternative.
+I find myself using this pattern all the time, and see it in tons of the codebases I have worked on. It's really common to need a set of related *constant* values, so common in fact that many lanugages have a construct specifically to describe them: Enums. Sadly, JavaScript is not one of those languages. That is why we are left with a half-hearted alternative, these "constant object" definitions. Perhaps one day we may get enums as a build-in language feature ( [enum is actually a reserved word](http://www.javascripter.net/faq/reserved.htm) in JavaScript), but for now we are left with what I consider: a lacking alternative.
 
-I have been rather rude to these "constant objects" and haven't explained why I feel this way. In JavaScript when specifying our object definition with `const` we are only prevented from reassigning the variable, not actually prevented from mutating that variable entirely. If I defined some object `x` using `const` I could later go and modify one of its properties, add a new one, or completely `delete` it. When it comes to true constant values this is less than ideal, we want to avoid somewhere in our program someone coming in and taking away our "pending" status and causing all sorts of bad behavior. While this is by far the most important feature of enums, I also believe that our "constant objects" are a bit long hand and could use some *syntactic sugar* to make them a bit nicer. So I took it upon myself to try and come up with a way to get enum-like behavior in my code.
+Though I have disparaged this pattern I called "constant objects", I haven't explained why they are lacking or why enums solve any of their problems. In JavaScript when specifying our object definition with `const` we are only prevented from reassigning the variable, not actually prevented from mutating that variable entirely. If I defined some object `x` using `const`, I could later go and modify one of its properties, add a new one, or completely `delete` it. When it comes to **true constant** values this is less than ideal. We want to avoid somewhere in our program someone coming in and taking away our "pending" status and causing all sorts of bad behavior. While safety is by far the most important feature of enums, I also believe that our "constant objects" are a bit long hand and could use some *syntactic sugar* to make them a bit nicer (because in the end we have to write this kind of code everyday). So I took it upon myself to try and come up with a way to get enum-like behavior in my code.
 
-> Caveat: I don't use typescript, they have enums that work great and are exactly what I am talking about. However I don't always have the opportunity to write typescript and many people don't so I wanted something I could use in any project I worked on.
+> Caveat: I don't use typescript, they have enums that work great and are exactly what I am talking about. However I don't always have the opportunity to write typescript and many people don't, so I wanted something I could use in any JS project.
 
-While I was looking at enums in other languages and fantasizing about them in my JavaScript, I came across [this proposal](https://github.com/rbuckton/proposal-enum) for an enum feature in ECMAScript by [Ron Buckton](https://twitter.com/rbuckton) (This guy is a senior engineer working on TypeScript so think he knows a thing or two about enums). I really liked this proposal, it had roots in enums from Java, C++, C#, and TypeScript. One feature I really like that was core to his proposal was the "Automatic Initialization" and the use of "auto-initializers". This means that you could determine the value that would be assigned to your enum by simply specifying the initializer you wanted to use, it looks like this:
+While I was looking at enums in other languages and fantasizing about them in JavaScript, I came across [this proposal](https://github.com/rbuckton/proposal-enum) for enums in ECMAScript by [Ron Buckton](https://twitter.com/rbuckton) (This guy is a senior engineer working on TypeScript so think he knows a thing or two about enums). I really liked the proposal, it had roots in enums from Java, C++, C#, and TypeScript, and a very clear definition of the functionality. One feature I really like that was core to his proposal was the "Automatic Initialization" and the use of "auto-initializers". This means that you could determine the value that would be assigned to your enum by simply specifying the initializer you wanted to use, it looks like this:
 
 ```js
 enum Colors of Number {
@@ -46,14 +46,14 @@ enum PlayState of String {
 }
 ```
 
-This seemed like a perfect method of removing the clunky object key/value syntax we use in the "constant objects" pattern. Now obviously any tool I would make wouldn't have all of the niceties of specialized syntax like the proposal without me having to go to the extraordinary lengths of writing a crazy babel plugin or something. So I decided on a semi-functional looking approach where I could pass in the initializer function to set up my enum creator and then pass in my enum definition into that creator. Here is what the examples I provided at the top look like with my enums tools:
+This seemed like a perfect method of removing the clunky object key/value syntax used in the "constant objects" pattern. Rather than have to directly specify the value of your enum it could be implied. Now obviously, any tool I could write wouldn't have all of the niceties of specialized syntax like the proposal (without me having to go to the extraordinary lengths of writing a full blown babel plugin or something). So I decided on a semi-functional looking approach where I could pass in the initializer function to set up my enum creator and then pass in my enum definition into that creator. Let's look at what my original examples would look like in the syntax I was dreaming up:
 
 ```js
 const PERIODS = enums(string)('week', 'day', 'hour', 'minute');
 const STATUSES = enums(number)('pending', 'inReview', 'approved', 'rejected');
 ```
 
-This format gives the tool a lot of power and potential for growth. The *auto-initializer* function (like `string` or `number`) passed into `enums` is designed to work just like a mapping function you would pass into `Array.prototype.map`. An initializer function should be able to accept the given enum as well as the previous value assigned: `function initializer(enm, prevVal) {}`. This allows for many types of initializers to be created and writen specifically for your needs. Both `number` and `string` are bundled into the core package as these are the most common type of auto-initialization, their implementations look like this:
+This format gives the tool a lot of power and potential for growth. The *auto-initializer* function (like `string` and `number`) passed into `enums` is designed to work just like a mapping function you would pass into `Array.prototype.map`. As long as an initializer returns a value for each enum passed to it, the tool will create an enum with that value. An initializer function is provided the current enum value as well as the previous value assigned: `function initializer(currentEnum[, previousValue]) {}` this allows you to modify the given enum or increment based on the last value. Hopefully this initializer API is robust enough to allow for large amounts of customization, so your specific use-case can be packaged and reused. Both `number` and `string` auto-initializers are bundled into the core package. Here are the implementations for both `string` and `number`:
 
 ```js
 function string(en) {
@@ -66,7 +66,7 @@ function number(en, prevVal) {
 }
 ```
 
-Here is what an initializer might look like if you wanted to capitalize the first letter of the enum:
+To show a custom example, an initializer that returns a capitalized string value of the given enum key might look something like this:
 
 ```js
 function capitalize(enm) {
@@ -74,7 +74,7 @@ function capitalize(enm) {
 }
 ```
 
-Obviously not every case is so cut and dry, sometimes we want custom values for each enum that don't map cleanly based on the enum string. For this I made sure to add an "override" syntax that allows you to give an object just like our "constant object" pattern:
+Obviously not every case is so cut and dry, sometimes we want custom values for each enum that don't map cleanly based on the enum string. To handle this the tool provides support for an *override syntax* to allow directly specifying the values rather than relying on auto-initialization. This ends up requiring the user to pass in a full JS object from which the enum will be constructed:
 
 ```js
 const COLORS = enums()({ red: '#f44242', green: '#27c65a', blue: '#003bff' });
@@ -84,7 +84,7 @@ At this point you might be asking: "Why use this tool if I am just going to be w
 
 ## Enums Implementation
 
-Here is the full implementation of the `fun-enums` package, it's only 39 lines:
+Here is the implementation of the `enums` tool, it's only 39 lines:
 
 ```js
 function enums(initializer = number) {
@@ -123,7 +123,7 @@ function enums(initializer = number) {
 }
 ```
 
-You may have noticed the use of [Object.freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze), this is how we can attempt to guarantee immutibility and safety of our enum implementation. `Object.freeze` will prevent properties from being added or removed from our underlying JS object by "[failing] either silently or by throwing a TypeError exception"*. It will also prevent values from being changed, "the writable and configurable attributes are set to false..."*. With freeze and const we are able to get pretty much entirely to object immutability to ensure our enums aren't modified by us or another developer. Freeze does have it's limitations, it can only freeze one level deep in an object. In the implementation not only is the top level "enum" object being frozen but any custom defined values are being frozen at the top level. This means that if you are assigning your enum values to nested objects the nested object is still in danger of being mutated. Make sure when doing this that you "deep freeze" your objects when assigning them to an enum. Deep freezing was left out of this implementation as it is not a pattern I use almost ever, but I wanted to be sure to point it out for anyone that might have that use-case.
+You may have noticed the use of [Object.freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze), this is how we can attempt to guarantee immutibility and safety of our enum implementation. `Object.freeze` will prevent properties from being added or removed from our underlying JS object by "[failing] either silently or by throwing a TypeError exception"\*. It will also prevent values from being changed, "the writable and configurable attributes are set to false..."\*. With freeze and const we are able to emulate object immutability to ensure our enums aren't modified by us or another developer. Freeze does have it's limitations, it can only freeze one level deep in an object. In the implementation not only is the top level "enum" object being frozen but any custom defined values are being frozen at the top level as well. This means that if you are assigning your enum values to nested objects the nested object is still in danger of being mutated. Make sure when doing this that you "deep freeze" your objects before assigning them to an enum. Deep freezing was left out of this implementation as the use of deeply nested objects isn't a pattern I see often, but I wanted to be sure to point it out for anyone that might have that use-case.
 
 > \* Quotes from linked MDN docs on `Object.freeze`
 
