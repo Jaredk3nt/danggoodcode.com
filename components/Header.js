@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
 import { withRouter } from "next/router";
-import { NUM_GRID_ITEMS, GRID_ITEM_WIDTH } from "../components/config";
+import { NUM_GRID_ITEMS, GRID_ITEM_WIDTH } from "../config/constants";
 
 export default withRouter(function Header({ router }) {
   const path = router.pathname.split("/");

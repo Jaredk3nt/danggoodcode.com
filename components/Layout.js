@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { LAYOUT_WIDTH } from './config';
+import { LAYOUT_WIDTH } from '../config/constants';
 
 export const Layout = styled('div')`
   width: 100%;

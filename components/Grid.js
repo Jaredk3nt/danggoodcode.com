@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
-import { animated, useTrail, useSpring } from "react-spring";
+import { animated, useSpring } from "react-spring";
 // Variables
-import { NUM_GRID_ITEMS, GRID_ITEM_WIDTH } from "./config";
+import { NUM_GRID_ITEMS, GRID_ITEM_WIDTH } from "../config/constants";
 const PADDING = "36px";
 const DIVIDER_PADDING = "16px";
 const TEXT_SIZE = "15px";

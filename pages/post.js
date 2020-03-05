@@ -21,7 +21,7 @@ export default class Project extends Component {
     const {
       postData: { title, date, content, url }
     } = this.props;
-    console.log(url);
+
     return (
       <Container>
         <div>
