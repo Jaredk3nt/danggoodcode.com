@@ -22,7 +22,7 @@
         "@emotion/styled": "^10.0.10",
         "emotion-theming": "^10.0.10",
         "express": "^4.16.4",
-        "next": "^8.0.3",
+        "next": "^9.3.2",
         "next-routes": "^1.4.2",
         "prop-types": "^15.7.2",
         "react": "^16.8.6",
