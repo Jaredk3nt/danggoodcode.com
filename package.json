@@ -21,7 +21,7 @@
         "@emotion/core": "^10.0.10",
         "@emotion/styled": "^10.0.10",
         "emotion-theming": "^10.0.10",
-        "express": "^4.16.4",
+        "express": "^4.18.2",
         "next": "^8.0.3",
         "next-routes": "^1.4.2",
         "prop-types": "^15.7.2",
