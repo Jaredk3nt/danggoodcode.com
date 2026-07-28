@@ -5,7 +5,7 @@ import { animated, useSpring } from "react-spring";
 import Tabs from "./Tabs";
 import Text from "./Text";
 // Variables
-import data from "../static/data.json";
+import data from "../public/data.json";
 const TABS = ["skills", "values"];
 const display = {
   [TABS[0]]: Skills,

@@ -1,0 +1,55 @@
+{
+  "modules": {
+    "byIdentifier": {
+      "multi private-next-pages/_app.js": 0,
+      "multi private-next-pages/index.js": 1,
+      "multi private-next-pages/post.js": 2,
+      "multi private-next-pages/posts.js": 3,
+      "multi private-next-pages/project.js": 4,
+      "multi private-next-pages/projects.js": 5,
+      "multi next/dist/pages/_error": 6,
+      "multi next/dist/pages/_document": 7
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7
+    }
+  },
+  "chunks": {
+    "byName": {
+      "static/p6DmfUVCnqNCKRjFPur7E/pages/_app.js": 0,
+      "static/p6DmfUVCnqNCKRjFPur7E/pages/_document.js": 1,
+      "static/p6DmfUVCnqNCKRjFPur7E/pages/_error.js": 2,
+      "static/p6DmfUVCnqNCKRjFPur7E/pages/index.js": 3,
+      "static/p6DmfUVCnqNCKRjFPur7E/pages/post.js": 4,
+      "static/p6DmfUVCnqNCKRjFPur7E/pages/posts.js": 5,
+      "static/p6DmfUVCnqNCKRjFPur7E/pages/project.js": 6,
+      "static/p6DmfUVCnqNCKRjFPur7E/pages/projects.js": 7,
+      "static/6lKFzuVWc8Sma4Y3tRZnT/pages/_app.js": 8,
+      "static/6lKFzuVWc8Sma4Y3tRZnT/pages/_document.js": 9,
+      "static/6lKFzuVWc8Sma4Y3tRZnT/pages/_error.js": 10,
+      "static/6lKFzuVWc8Sma4Y3tRZnT/pages/index.js": 11,
+      "static/6lKFzuVWc8Sma4Y3tRZnT/pages/post.js": 12,
+      "static/6lKFzuVWc8Sma4Y3tRZnT/pages/posts.js": 13,
+      "static/6lKFzuVWc8Sma4Y3tRZnT/pages/project.js": 14,
+      "static/6lKFzuVWc8Sma4Y3tRZnT/pages/projects.js": 15
+    },
+    "bySource": {},
+    "usedIds": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      8,
+      9
+    ]
+  }
+}

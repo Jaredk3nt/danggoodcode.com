@@ -10,7 +10,7 @@ export default class Project extends Component {
   static getInitialProps = async context => {
     const { post } = context.query;
     try {
-      const postData = await require(`../static/posts/dist/${post}.json`);
+      const postData = await require(`../public/posts/dist/${post}.json`);
       return { statusCode: 200, postData };
     } catch (err) {
       return { statusCode: 404 };

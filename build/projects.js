@@ -24,9 +24,10 @@ function build() {
       ...frontMatter
     };
   });
-  fileData.forEach(fd =>
+  fileData.forEach(fd => {
+    console.log(`${path}/dist/${fd.fileName}.json`);
     writeOut(`${path}/dist/${fd.fileName}.json`, JSON.stringify(fd))
-  );
+  });
 }
 
 build();

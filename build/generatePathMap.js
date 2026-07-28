@@ -23,6 +23,7 @@ async function generatePathMap() {
 function projectPaths() {
     const path = getFullPath(projectsPath + '/dist');
     const files = readDir(path);
+    console.log(files);
     return files.reduce((acc, file) => {
         const fileName = file.split(".")[0];
         return {

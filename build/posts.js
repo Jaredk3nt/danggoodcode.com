@@ -24,6 +24,7 @@ function build() {
       ...frontMatter,
     };
   });
+  console.log(path);
   fileData.forEach(fd =>
     writeOut(`${path}/dist/${fd.fileName}.json`, JSON.stringify(fd))
   );

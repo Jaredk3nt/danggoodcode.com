@@ -1,5 +1,5 @@
-const projectsPath = '/static/projects';
-const postsPath = '/static/posts';
+const projectsPath = '/public/projects';
+const postsPath = '/public/posts';
 const outDir = 'dist';
 
 module.exports = {

@@ -10,7 +10,7 @@ export default class Project extends Component {
   static getInitialProps = async context => {
     const { project } = context.query;
     try {
-      const projectData = await require(`../static/projects/dist/${project}.json`);
+      const projectData = await require(`../public/projects/dist/${project}.json`);
       return { statusCode: 200, projectData };
     } catch (err) {
       return { statusCode: 404 };
@@ -50,6 +50,10 @@ export default class Project extends Component {
       </Container>
     );
   }
+}
+
+export async function getStaticProps() {
+  return { props: {} };
 }
 
 

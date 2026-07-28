@@ -11,7 +11,7 @@ import {
 import Text from "../components/Text";
 import { Arrow, ArrowContainer } from "../components/Arrow";
 // Variables
-import data from "../static/data.json";
+import data from "../public/data.json";
 
 export default function ProjectGrid() {
   return (

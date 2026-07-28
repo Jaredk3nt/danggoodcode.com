@@ -7,14 +7,14 @@
         "node": "24.x"
     },
     "scripts": {
-        "dev": "next",
+        "dev": "NODE_OPTIONS=--openssl-legacy-provider && next",
         "export": "next export",
-        "build": "NODE_OPTIONS=--openssl-legacy-provider && next build",
-        "start": "next start",
+        "build": "NODE_OPTIONS=--openssl-legacy-provider && next build && next export",
+        "start": "serve out",
         "deploy": "now ./out",
-        "clean:projects": "rm -r static/projects/dist; mkdir static/projects/dist",
+        "clean:projects": "rm -r public/projects/dist; mkdir public/projects/dist",
         "build:projects": "npm run clean:projects; node build/projects.js",
-        "clean:posts": "rm -r static/posts/dist; mkdir static/posts/dist",
+        "clean:posts": "rm -r public/posts/dist; mkdir public/posts/dist",
         "build:posts": "npm run clean:posts; node build/posts.js",
         "build:all": "npm run build:projects && npm run build:posts"
     },
@@ -37,5 +37,8 @@
     },
     "bin": {
         "build-projects": "build/projects.js"
+    },
+    "devDependencies": {
+        "serve": "^14.2.6"
     }
 }

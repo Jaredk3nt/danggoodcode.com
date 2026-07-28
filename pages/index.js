@@ -5,7 +5,7 @@ import About from "../components/About";
 import ProjectGrid from "../components/ProjectGrid";
 import AnimatedList from "../components/AnimatedList";
 // Variables
-import data from "../static/data.json";
+import data from "../public/data.json";
 const TABS = ["projects", "blog", "about"];
 const display = {
   [TABS[0]]: ProjectGrid,

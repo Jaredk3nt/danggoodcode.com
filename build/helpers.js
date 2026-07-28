@@ -9,7 +9,7 @@ function isFile(pth) {
 }
 
 function isMdFile(pth) {
-  return isFile(pth) && pth.split(".")[1] === "md";
+  return isFile(pth) && pth.split(".").at(-1) === "md";
 }
 
 function getFullPath(pth) {
