@@ -25,6 +25,7 @@ export default function Tabs({
 }
 
 const TabContainer = styled("nav")`
+  margin-top: 36px;
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;

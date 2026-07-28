@@ -43,11 +43,7 @@ export default function About() {
         fs={22}
         lh={1.4}
       >
-        Howdy, my name is Jared Jones. I am a software developer currently based
-        in Austin, TX working on a project called Fortellis at CDK Global. I spend
-        my days building a customer driven e-commerce platform for the
-        automotive industry and my nights testing my skills and building all
-        sorts of fun software projects.
+        Howdy, my name is Jared Jones. I am a software developer currently working a PayPal, based in Seattle, WA. I spent my weekdays building the platform that powers promotions and incentives across the different PayPal brands, and my weekends running and climbing all around the mountains of the cascades.
       </AnimatedText>
       <AnimatedText
         style={{
@@ -58,10 +54,20 @@ export default function About() {
         fs={22}
         lh={1.4}
       >
-        I love building for the web because it is an outlet for near-pure
-        creativity and problem solving. A good website does more than just look
-        good and feel good, it empowers people to do the things they love doing.
+        I have been building for the web for over a decade now, and still love it as a pure an outlet for creativity.
       </AnimatedText>
+      <AnimatedText
+        style={{
+          ...textAnim,
+          transform: textAnim.x.interpolate(x => `translate3d(0, ${x}px, 0)`)
+        }}
+        m={{ top: 28 }}
+        fs={22}
+        lh={1.4}
+      >
+        You can find many of my various personal projects here, and my writing and photography over at <a href="https://where-is-jared.com" referrerPolicy="_blank">Where is Jared?</a>
+      </AnimatedText>
+      <Divider />
       <animated.div
         style={{
           ...tabsAnim,

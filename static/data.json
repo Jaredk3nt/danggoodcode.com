@@ -56,15 +56,15 @@
   ],
   "skills": [
     {
-      "title": "web development",
-      "description": "day to day I build customer-ready sites with react and node.js"
+      "title": "software development",
+      "description": "day to day I build enterprise-grade and customer-ready applications"
     },
     {
       "title": "prototyping",
-      "description": "I work with architects to build p.o.c tools and features fast so we can define solid roadmaps"
+      "description": "I work with product teams to build p.o.c tools and features fast so we can define solid roadmaps"
     },
     {
-      "title": "speaking",
+      "title": "communication",
       "description": "I excel at communicating ideas with others including through public speaking"
     }
   ],
